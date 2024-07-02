@@ -11,6 +11,7 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState("all"); // Default to show all tasks
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetchTasks();
@@ -18,28 +19,36 @@ const HomePage = () => {
 
   useEffect(() => {
     // Apply filters based on activeTab
+    let filtered = tasks;
+
     switch (activeTab) {
       case "completed":
-        setFilteredTasks(tasks.filter((task) => task.completed));
+        filtered = tasks.filter((task) => task.completed);
         break;
       case "backlogs":
-        setFilteredTasks(
-          tasks.filter((task) => !task.completed && isTaskOverdue(task))
+        filtered = tasks.filter(
+          (task) => !task.completed && isTaskOverdue(task)
         );
         break;
       case "upcoming":
-        setFilteredTasks(
-          tasks.filter(
-            (task) =>
-              !task.completed && !isTaskOverdue(task) && isTaskUpcoming(task)
-          )
+        filtered = tasks.filter(
+          (task) =>
+            !task.completed && !isTaskOverdue(task) && isTaskUpcoming(task)
         );
         break;
       default:
-        setFilteredTasks(tasks);
         break;
     }
-  }, [tasks, activeTab]);
+
+    // Apply search filter
+    if (searchQuery) {
+      filtered = filtered.filter((task) =>
+        task.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    setFilteredTasks(filtered);
+  }, [tasks, activeTab, searchQuery]);
 
   const isTaskOverdue = (task) => {
     const dueDate = new Date(task.dueDate).setHours(0, 0, 0, 0); // Start of due date
@@ -65,14 +74,19 @@ const HomePage = () => {
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-center text-4xl p-2 border-4 border-orange-800">
+      <h1 className="text-center text-4xl p-2 border-4 border-orange-800 text-white">
         Tasked
       </h1>
-      <Tabs
-        className="mt-3"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
+      <div className="mt-3">
+        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+        <input
+          type="text"
+          placeholder="Search tasks..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full p-2 mt-2 border rounded-md"
+        />
+      </div>
       {tasks ? (
         <TaskList tasks={filteredTasks} openModal={openModal} />
       ) : (

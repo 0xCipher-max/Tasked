@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: black;
+  /* color: white; */
+}
+
 .btn {
   padding: 0.5rem 1rem;
   border: 1px solid transparent;

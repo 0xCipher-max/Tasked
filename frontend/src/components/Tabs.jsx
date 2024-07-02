@@ -2,7 +2,7 @@ import React from "react";
 
 const Tabs = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex justify-center space-x-4">
+    <div className="flex justify-center space-x-4 text-white">
       <button
         className={`btn-tab p-2 border-b-2 ${
           activeTab === "all" ? "border-red-600" : "border-transparent"
