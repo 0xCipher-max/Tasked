@@ -11,7 +11,9 @@ const TaskProvider = ({ children }) => {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/tasks/");
+      const response = await fetch(
+        "https://backend-ten-ecru.vercel.app/api/tasks/api/tasks/"
+      );
       const data = await response.json();
       setTasks(data);
     } catch (error) {
@@ -21,13 +23,16 @@ const TaskProvider = ({ children }) => {
 
   const addTask = async (newTask) => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/tasks/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTask),
-      });
+      const response = await fetch(
+        "https://backend-ten-ecru.vercel.app/api/tasks/api/tasks/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTask),
+        }
+      );
       const data = await response.json();
       setTasks([...tasks, data]);
     } catch (error) {
@@ -38,7 +43,7 @@ const TaskProvider = ({ children }) => {
   const editTask = async (taskId, updatedTask) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/tasks/${taskId}`,
+        `https://backend-ten-ecru.vercel.app/api/tasks/${taskId}`,
         {
           method: "PUT",
           headers: {
@@ -60,9 +65,12 @@ const TaskProvider = ({ children }) => {
   const deleteTask = async (taskId) => {
     try {
       console.log(taskId);
-      await fetch(`http://127.0.0.1:5000/api/tasks/${taskId}`, {
-        method: "DELETE",
-      });
+      await fetch(
+        `https://backend-ten-ecru.vercel.app/api/tasks/api/tasks/${taskId}`,
+        {
+          method: "DELETE",
+        }
+      );
       const updatedTasks = tasks.filter((task) => task._id !== taskId);
       setTasks(updatedTasks);
     } catch (error) {
