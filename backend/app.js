@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: "https://tasked-one.vercel.app/", // Allow requests from this origin
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.),
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
 
