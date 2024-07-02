@@ -36,7 +36,7 @@ const TaskList = ({ tasks, openModal }) => {
     <>
       <div className="mt-8">
         {tasks.length === 0 ? (
-          <p>No tasks. Add one!</p>
+          <p className="text-white">No tasks. Add one!</p>
         ) : (
           tasks.map((task) => (
             <div

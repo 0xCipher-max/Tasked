@@ -62,7 +62,7 @@ const Modal = ({ isOpen, closeModal, isEditing, initialTask }) => {
                   name="title"
                   value={taskData.title}
                   onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="focus:outline-none mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 />
               </div>
@@ -78,7 +78,7 @@ const Modal = ({ isOpen, closeModal, isEditing, initialTask }) => {
                   name="description"
                   value={taskData.description}
                   onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="focus:outline-none mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 ></textarea>
               </div>
@@ -95,7 +95,7 @@ const Modal = ({ isOpen, closeModal, isEditing, initialTask }) => {
                   name="dueDate"
                   value={taskData.dueDate}
                   onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="focus:outline-none mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 />
               </div>

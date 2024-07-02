@@ -77,15 +77,17 @@ const HomePage = () => {
       <h1 className="text-center text-4xl p-2 border-4 border-orange-800 text-white">
         Tasked
       </h1>
-      <div className="mt-3">
+      <div className="mt-9">
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        <input
-          type="text"
-          placeholder="Search tasks..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full p-2 mt-2 border rounded-md"
-        />
+        <div className="input-container flex justify-center mt-6">
+          <input
+            type="text"
+            placeholder="Search tasks..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className=" p-2 mt-2 border rounded-md focus:outline-none"
+          />
+        </div>
       </div>
       {tasks ? (
         <TaskList tasks={filteredTasks} openModal={openModal} />
