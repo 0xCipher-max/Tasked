@@ -1,13 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TaskContext } from "../context/TaskContext";
 
 const Modal = ({ isOpen, closeModal, isEditing, initialTask }) => {
   const { addTask, editTask } = useContext(TaskContext);
   const [taskData, setTaskData] = useState({
-    title: isEditing ? initialTask.title : "",
-    description: isEditing ? initialTask.description : "",
-    dueDate: isEditing ? initialTask.dueDate : "",
+    title: "",
+    description: "",
+    dueDate: "",
   });
+
+  useEffect(() => {
+    if (isEditing && initialTask) {
+      setTaskData({
+        title: initialTask.title,
+        description: initialTask.description,
+        dueDate: initialTask.dueDate,
+      });
+    } else {
+      setTaskData({
+        title: "",
+        description: "",
+        dueDate: "",
+      });
+    }
+  }, [isEditing, initialTask]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -42,14 +42,14 @@ const HomePage = () => {
   }, [tasks, activeTab]);
 
   const isTaskOverdue = (task) => {
-    const dueDate = new Date(task.dueDate);
-    const today = new Date();
+    const dueDate = new Date(task.dueDate).setHours(0, 0, 0, 0); // Start of due date
+    const today = new Date().setHours(0, 0, 0, 0); // Start of today
     return dueDate < today;
   };
 
   const isTaskUpcoming = (task) => {
-    const dueDate = new Date(task.dueDate);
-    const today = new Date();
+    const dueDate = new Date(task.dueDate).setHours(0, 0, 0, 0); // Start of due date
+    const today = new Date().setHours(0, 0, 0, 0); // Start of today
     return dueDate >= today;
   };
 
@@ -65,7 +65,14 @@ const HomePage = () => {
 
   return (
     <div className="container mx-auto mt-8">
-      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <h1 className="text-center text-4xl p-2 border-4 border-orange-800">
+        Tasked
+      </h1>
+      <Tabs
+        className="mt-3"
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       {tasks ? (
         <TaskList tasks={filteredTasks} openModal={openModal} />
       ) : (

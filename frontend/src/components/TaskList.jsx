@@ -82,7 +82,7 @@ const TaskList = ({ tasks, openModal }) => {
       </div>
       <div className="add-button mt-2">
         <button
-          className="btn-mark-completed p-2 rounded-lg"
+          className="btn-mark-completed p-2 rounded-lg mb-5"
           onClick={() => openModal()}
         >
           Add Task
