@@ -12,7 +12,7 @@ const TaskProvider = ({ children }) => {
   const fetchTasks = async () => {
     try {
       const response = await fetch(
-        "https://backend-ten-ecru.vercel.app/api/tasks/api/tasks/"
+        "https://backend-m3r32tcy0-0xciphermaxs-projects.vercel.app//api/tasks/"
       );
       const data = await response.json();
       setTasks(data);
@@ -24,7 +24,7 @@ const TaskProvider = ({ children }) => {
   const addTask = async (newTask) => {
     try {
       const response = await fetch(
-        "https://backend-ten-ecru.vercel.app/api/tasks/api/tasks/",
+        "https://backend-m3r32tcy0-0xciphermaxs-projects.vercel.app//api/tasks/",
         {
           method: "POST",
           headers: {
@@ -43,7 +43,7 @@ const TaskProvider = ({ children }) => {
   const editTask = async (taskId, updatedTask) => {
     try {
       const response = await fetch(
-        `https://backend-ten-ecru.vercel.app/api/tasks/${taskId}`,
+        `https://backend-m3r32tcy0-0xciphermaxs-projects.vercel.app//${taskId}`,
         {
           method: "PUT",
           headers: {
@@ -66,7 +66,7 @@ const TaskProvider = ({ children }) => {
     try {
       console.log(taskId);
       await fetch(
-        `https://backend-ten-ecru.vercel.app/api/tasks/api/tasks/${taskId}`,
+        `https://backend-m3r32tcy0-0xciphermaxs-projects.vercel.app//api/tasks/${taskId}`,
         {
           method: "DELETE",
         }
