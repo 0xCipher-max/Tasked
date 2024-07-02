@@ -33,12 +33,13 @@ exports.getTaskById = async (req, res) => {
 };
 
 exports.updateTask = async (req, res) => {
-  const { title, description, dueDate } = req.body;
+  const { title, description, dueDate, completed } = req.body;
   try {
     const task = await TaskService.updateTask(req.params.id, {
       title,
       description,
       dueDate,
+      completed,
     });
     if (task) {
       res.json(task);
