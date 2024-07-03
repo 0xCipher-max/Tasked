@@ -34,7 +34,7 @@ const TaskList = ({ tasks, openModal }) => {
 
   return (
     <>
-      <div className="mt-8">
+      <div className="m-8">
         {tasks.length === 0 ? (
           <p className="text-white">No tasks. Add one!</p>
         ) : (
@@ -80,7 +80,7 @@ const TaskList = ({ tasks, openModal }) => {
           ))
         )}
       </div>
-      <div className="add-button mt-2">
+      <div className="add-button m-8">
         <button
           className="btn-mark-completed p-2 rounded-lg mb-5"
           onClick={() => openModal()}
