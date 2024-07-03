@@ -12,7 +12,7 @@ const TaskProvider = ({ children }) => {
   const fetchTasks = async () => {
     try {
       const response = await fetch(
-        "https://backend-0xcipher-max-0xciphermaxs-projects.vercel.app/api/tasks"
+        "https://backend-ten-ecru.vercel.app/api/tasks"
       );
       const data = await response.json();
       setTasks(data);
@@ -24,7 +24,7 @@ const TaskProvider = ({ children }) => {
   const addTask = async (newTask) => {
     try {
       const response = await fetch(
-        "https://backend-0xcipher-max-0xciphermaxs-projects.vercel.app/api/tasks",
+        "https://backend-ten-ecru.vercel.app/api/tasks",
         {
           method: "POST",
           headers: {
@@ -43,7 +43,7 @@ const TaskProvider = ({ children }) => {
   const editTask = async (taskId, updatedTask) => {
     try {
       const response = await fetch(
-        `https://backend-0xcipher-max-0xciphermaxs-projects.vercel.app/${taskId}`,
+        `https://backend-ten-ecru.vercel.app/api/tasks/${taskId}`,
         {
           method: "PUT",
           headers: {
@@ -65,12 +65,9 @@ const TaskProvider = ({ children }) => {
   const deleteTask = async (taskId) => {
     try {
       console.log(taskId);
-      await fetch(
-        `https://backend-0xcipher-max-0xciphermaxs-projects.vercel.app/api/tasks/${taskId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      await fetch(`https://backend-ten-ecru.vercel.app/api/tasks/${taskId}`, {
+        method: "DELETE",
+      });
       const updatedTasks = tasks.filter((task) => task._id !== taskId);
       setTasks(updatedTasks);
     } catch (error) {

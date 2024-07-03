@@ -9,14 +9,26 @@ const app = express();
 
 app.use(helmet());
 app.use(express.json());
+// const allowedOrigins = [
+//   "https://your-frontend-url.com",
+//   "http://127.0.0.1:3000", // For development
+// ];
 
-app.use(
-  cors({
-    origin: "https://tasked-one.vercel.app/", // Allow requests from this origin
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.),
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         const msg =
+//           "The CORS policy for this site does not allow access from the specified origin.";
+//         return callback(new Error(msg), false);
+//       }
+//       return callback(null, true);
+//     },
+//     credentials: true,
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   })
+// );
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -27,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: "Internal Server Error" });
+  res.status(500).json({ message: "Internal Server Error at entry" });
 });
 
 module.exports = app;
